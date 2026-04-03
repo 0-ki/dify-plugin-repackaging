@@ -3,7 +3,8 @@
 
 DEFAULT_GITHUB_API_URL=https://github.com
 DEFAULT_MARKETPLACE_API_URL=https://marketplace.dify.ai
-DEFAULT_PIP_MIRROR_URL=https://mirrors.aliyun.com/pypi/simple
+DEFAULT_PIP_MIRROR_URL=https://pypi.org/simple 
+# https://mirrors.aliyun.com/pypi/simple
 
 GITHUB_API_URL="${GITHUB_API_URL:-$DEFAULT_GITHUB_API_URL}"
 MARKETPLACE_API_URL="${MARKETPLACE_API_URL:-$DEFAULT_MARKETPLACE_API_URL}"
@@ -334,7 +335,7 @@ PY
 	mkdir -p ./wheels
 	echo "Downloading wheels to ./wheels/..."
 	${PIP_CMD} download ${PIP_PLATFORM} --prefer-binary -r requirements.txt -d ./wheels \
-		--index-url ${PIP_MIRROR_URL} --trusted-host mirrors.aliyun.com
+		--index-url ${PIP_MIRROR_URL} --trusted-host pypi.org # mirrors.aliyun.com
 	if [[ $? -ne 0 ]]; then
 		echo "✗ Error: Failed to download dependencies"
 		exit 1
